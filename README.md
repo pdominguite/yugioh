@@ -15,4 +15,4 @@ This project aims to learn and better understand web development using:
 * WildFly 16
 * Maven
 
-For more details on the business rules, please, refer to the UML model under */src/main/resources* for a full explanation on classes, relationships and patterns.
+For more details on the business rules, please, refer to the UML model under */src/main/resources* for a full explanation of classes, relationships and patterns.
