@@ -1,0 +1,42 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:b="http://bootsfaces.net/ui">
+
+<ui:composition template="../template.xhtml">
+	<ui:define name="row2">
+		<b:form>
+			<b:panelGrid columns="1">
+				<b:inputText label="Nome:" value="#{duelistaBean.duelista.nome}" required="true"/>
+				<b:inputText label="Nascimento:" value="#{duelistaBean.duelista.nascimento}"/>
+				<b:inputText label="Altura:" value="#{duelistaBean.duelista.altura}"/>
+				<b:inputText label="Peso:" value="#{duelistaBean.duelista.peso}"/>
+				<b:inputText label="Profissão:" value="#{duelistaBean.duelista.profissao}"/>
+				<b:inputText label="Gênero:" value="#{duelistaBean.duelista.genero}"/>
+				<b:inputText label="Deck:" value="#{duelistaBean.duelista.deck}"/>
+				<b:inputText label="Pontos de Vida:" value="#{duelistaBean.duelista.pontosDeVida}"/>
+				<b:inputText label="Duelos Ganhos:" value="#{duelistaBean.duelista.duelosGanhos}"/>
+				<b:inputText label="Classificação:" value="#{duelistaBean.duelista.classificacao}"/>
+				<b:inputText label="Ranking:" value="#{duelistaBean.duelista.ranking}"/>
+				<b:selectOneMenu label="Baralho:" value="#{duelistaBean.duelista.baralho}">
+					<f:selectItem itemLabel="(ID - Monstro Principal)" itemValue="" noSelectionOption="true"/>
+					<f:selectItems value="#{baralhoBean.baralhos}" var="a" itemLabel="#{a.id} - #{a.monstroPrincipal.nome}"/>
+				</b:selectOneMenu>
+				<b:selectMultiMenu label="Relíquias:" value="#{duelistaBean.reliquias}" nonSelectedText="(Selecione a(s) Relíquias do Milênio)">
+				    <f:selectItems value="#{reliquiaDoMilenioBean.reliquias}" var="r" itemValue="#{r.nome}" itemLabel="#{r.nome}"/>
+			    </b:selectMultiMenu>
+			</b:panelGrid>
+			<div id="submitQuery">
+				<b:panel>
+					<p><b:commandButton look="success" value="Inserir" action="#{duelistaBean.inserir}"/></p>
+				</b:panel>
+			</div>
+			<b:message/>
+		</b:form>
+	</ui:define>
+</ui:composition>
+</html>

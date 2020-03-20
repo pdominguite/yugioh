@@ -1,0 +1,45 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:b="http://bootsfaces.net/ui">
+
+<ui:composition template="../template.xhtml">
+	<ui:define name="row2">
+		<b:form>
+			<b:panelGrid columns="1">
+				<b:inputText label="Objetivo:" value="#{simplesBean.simples.objetivo}" required="true"/>
+				<b:inputText label="Local:" value="#{simplesBean.simples.local}"/>
+				<b:inputText label="Pontos de Vida Inicial:" value="#{simplesBean.simples.pontosDeVidaInicial}"/>
+				<b:selectOneMenu label="Domínio:" value="#{simplesBean.simples.dominio}">
+					<f:selectItems value="#{enumBean.dominios}"/>
+				</b:selectOneMenu>
+				<b:selectOneMenu label="Participante 1:" value="#{simplesBean.participante1}" ajax="true" onselect="#{simplesBean.participantes()}" update="vencedor" required="true">
+					<f:selectItem itemLabel="(Duelista 1)" noSelectionOption="true"/>
+					<f:selectItems value="#{duelistaBean.duelistas}" var="r" itemValue="#{r.nome}" itemLabel="#{r.nome}"/>
+				</b:selectOneMenu>
+				<b:selectOneMenu label="Participante 2:" value="#{simplesBean.participante2}" ajax="true" onselect="#{simplesBean.participantes()}" update="vencedor" required="true">
+					<f:selectItem itemLabel="(Duelista 2)" noSelectionOption="true"/>
+					<f:selectItems value="#{duelistaBean.duelistas}" var="r" itemValue="#{r.nome}" itemLabel="#{r.nome}"/>
+				</b:selectOneMenu>
+				<b:selectOneMenu id="vencedor" label="Vencedor:" value="#{simplesBean.vencedor.nome}" required="true">
+					<f:selectItem itemLabel="(Vencedor)" noSelectionOption="true"/>
+					<f:selectItems value="#{simplesBean.participantes()}"/>
+				</b:selectOneMenu>
+				<b:inputText label="Duração:" placeholder="" value="#{simplesBean.simples.duracao}">
+					<f:convertDateTime type="time" pattern="hh:mm:ss" timeZone="America/Sao_Paulo"/>
+				</b:inputText>
+			</b:panelGrid>
+			<div id="submitQuery">
+				<b:panel>
+					<p><b:commandButton look="success" value="Inserir" action="#{simplesBean.inserir}"/></p>
+				</b:panel>
+			</div>
+			<b:message/>
+		</b:form>
+	</ui:define>
+</ui:composition>
+</html>

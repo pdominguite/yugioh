@@ -1,0 +1,51 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:b="http://bootsfaces.net/ui">
+
+<ui:composition template="../template.xhtml">
+	<ui:define name="row2">
+		<b:form>
+			<b:panelGrid columns="1">		
+				<b:inputText label="Nome:" value="#{monstroDeRitualBean.monstro.nome}" required="true"/>
+				<b:inputText label="Nível:" value="#{monstroDeRitualBean.monstro.nivel}"/>
+				<b:inputText label="Ataque:" value="#{monstroDeRitualBean.monstro.ataque}"/>
+				<b:inputText label="Defesa:" value="#{monstroDeRitualBean.monstro.defesa}"/>
+				<b:selectOneMenu label="Atributo:" value="#{monstroDeRitualBean.monstro.atributo}">
+					<f:selectItems value="#{enumBean.atributos}"/>
+				</b:selectOneMenu>
+				<b:selectOneMenu label="Tipo:" value="#{monstroDeRitualBean.monstro.tipo}">
+					<f:selectItems value="#{enumBean.monstros}"/>
+				</b:selectOneMenu>
+				<b:selectOneMenu label="Posição de Batalha:" value="#{monstroDeRitualBean.monstro.posicaoDeBatalha}">
+					<f:selectItems value="#{enumBean.posicoes}"/>
+				</b:selectOneMenu>
+				<b:inputText label="Poder:" value="#{monstroDeRitualBean.monstro.nomePoder}"/>
+				<b:selectOneMenu label="Carta de Ritual:" value="#{monstroDeRitualBean.monstro.cartaDeRitual}">
+					<f:selectItems value="#{magicaBean.magicasRitual}" var="a" itemLabel="#{a.id} - #{a.nome}"/>
+				</b:selectOneMenu>
+				<b:selectOneMenu label="Monstro 1:" value="#{monstroDeRitualBean.monstro1}">
+					<f:selectItems value="#{monstroBean.allMonstros}" var="a" itemLabel="#{a.id} - #{a.nome}"/>
+				</b:selectOneMenu>
+				<b:selectOneMenu label="Monstro 2:" value="#{monstroDeRitualBean.monstro2}">
+					<f:selectItems value="#{monstroBean.allMonstros}" var="a" itemLabel="#{a.id} - #{a.nome}"/>
+				</b:selectOneMenu>
+				<b:selectOneMenu label="Monstro 3:" value="#{monstroDeRitualBean.monstro3}">
+					<f:selectItem itemLabel="(Selecione o terceiro monstro)" noSelectionValue="true"/>
+					<f:selectItems value="#{monstroBean.allMonstros}" var="a" itemLabel="#{a.id} - #{a.nome}"/>
+				</b:selectOneMenu>
+			</b:panelGrid>
+			<div id="submitQuery">
+				<b:panel>
+					<p><b:commandButton look="success" value="Inserir" action="#{monstroDeRitualBean.inserir}"/></p>
+				</b:panel>
+			</div>
+			<b:message/>
+		</b:form>
+	</ui:define>
+</ui:composition>
+</html>

@@ -1,0 +1,52 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:b="http://bootsfaces.net/ui">
+
+<ui:composition template="../template.xhtml">
+	<ui:define name="row2">
+		<b:form>
+			<b:panelGrid columns="1">
+				<b:inputText label="Monstro:" value="#{monstroBean.monstro.nome}"/>
+			</b:panelGrid>
+			<div id="submitQuery">
+				<b:panel>
+					<b:commandButton look="primary" value="Buscar" action="#{monstroBean.findByName}"/>
+				</b:panel>
+			</div>		
+		</b:form>
+		<b:form>
+    <b:panelGrid columns="1">
+        <b:selectOneMenu value="#{monstroBean.monstro}" ajax="true" process="@this" update="@form">
+            <f:converter converterId="monstroConverter"/>
+            <f:selectItems value="#{monstroBean.monstros}" var="monstro"
+                itemValue="#{monstro}" itemLabel="#{monstro.id}" />
+        </b:selectOneMenu>
+        <b:inputText label="Nome:" value="#{monstroBean.monstro.nome}"/>
+		<b:inputText label="Nível:" value="#{monstroBean.monstro.nivel}"/>
+		<b:inputText label="Ataque:" value="#{monstroBean.monstro.ataque}"/>
+		<b:inputText label="Defesa:" value="#{monstroBean.monstro.defesa}"/>
+		<b:selectOneMenu label="Atributo:" value="#{monstroBean.monstro.atributo}">
+			<f:selectItems value="#{enumBean.atributos}"/>
+		</b:selectOneMenu>
+		<b:selectOneMenu label="Tipo:" value="#{monstroBean.monstro.tipo}">
+			<f:selectItems value="#{enumBean.monstros}"/>
+		</b:selectOneMenu>
+		<b:selectOneMenu label="Posição de Batalha:" value="#{monstroBean.monstro.posicaoDeBatalha}">
+			<f:selectItems value="#{enumBean.posicoes}"/>
+		</b:selectOneMenu>
+		<b:inputText label="Poder:" value="#{monstroBean.monstro.nomePoder}"/>
+    </b:panelGrid>
+    <div id="submitQuery">
+				<b:panel>
+					<b:commandButton look="warning" value="Atualizar" action="#{monstroBean.atualizar}"/>
+				</b:panel>
+			</div>		
+</b:form>
+	</ui:define>
+</ui:composition>
+</html>

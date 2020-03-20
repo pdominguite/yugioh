@@ -1,0 +1,31 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:b="http://bootsfaces.net/ui">
+
+<ui:composition template="../template.xhtml">
+	<ui:define name="row2">
+		<b:form>
+			<b:panelGrid columns="1">
+				<b:selectOneMenu label="Monstro Principal:" value="#{baralhoBean.baralho.monstroPrincipal}" required="true">
+					<f:selectItem itemLabel="(Id - Monstro Principal)" itemValue="" noSelectionOption="true"/>
+					<f:selectItems value="#{monstroBean.allMonstros}" var="m" itemLabel="#{m.id} - #{m.nome}"/>
+				</b:selectOneMenu>
+				<b:selectMultiMenu label="Cartas:" value="#{baralhoBean.cartas}" nonSelectedText="(Selecione as Cartas do Baralho)">
+				    <f:selectItems value="#{cartaBean.cartas}" var="r" itemValue="#{r.id}" itemLabel="#{r.id} - #{r.nome}"/>
+			    </b:selectMultiMenu>
+			</b:panelGrid>
+			<div id="submitQuery">
+				<b:panel>
+					<p><b:commandButton look="success" value="Inserir" action="#{baralhoBean.inserir}"/></p>
+				</b:panel>
+			</div>
+			<b:message/>
+		</b:form>
+	</ui:define>
+</ui:composition>
+</html>

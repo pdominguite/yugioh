@@ -1,0 +1,71 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:b="http://bootsfaces.net/ui">
+<h:head>
+	<h:outputStylesheet library="css" name="site3.css" />
+	<title><ui:insert name="title">Yu-Gi-Oh!</ui:insert></title>
+</h:head>
+<h:body>
+	<div id="main">
+		<div id="navbar">
+			<b:navBar brand="Yu-Gi-Oh!" brandHref="index.xhtml" contentDisabled="#{navBarBean.navBarDisabled}">
+				<div id="navbarLinks" class="text-center">
+					<b:navbarLinks contentDisabled="#{navBarBean.navBarLinksDisabled}">
+						<b:dropMenu value="Classes" contentDisabled="#{navBarBean.dropMenuDisabled}">
+							<b:navLink value="Baralho" href="baralho/menu.xhtml"></b:navLink>
+							<b:dropMenu value="Carta">
+								<b:dropMenu value="Efeito">
+									<b:navLink value="Mágica" href="magica/menu.xhtml"></b:navLink>
+									<b:navLink value="Armadilha" href="armadilha/menu.xhtml"></b:navLink>
+								</b:dropMenu>
+								<b:navLink value="Exodia" href="exodia/menu.xhtml"></b:navLink>
+								<b:navLink value="Monstro" href="monstro/menu.xhtml"></b:navLink>
+								<b:navLink value="Monstro de Efeito" href="monstroDeEfeito/menu.xhtml"></b:navLink>
+								<b:navLink value="Monstro de Fusão" href="monstroDeFusao/menu.xhtml"></b:navLink>
+								<b:navLink value="Monstro de Ritual" href="monstroDeRitual/menu.xhtml"></b:navLink>
+							</b:dropMenu>
+							<b:dropMenu value="Estrutura">
+								<b:navLink value="Arena de Duelo" href="arenaDeDuelo/menu.xhtml"/>
+								<b:navLink value="Campo de Duelo" href="campoDeDuelo/menu.xhtml"/>
+								<b:navLink value="Disco de Duelo" href="discoDeDuelo/menu.xhtml"/>
+							</b:dropMenu>
+							<b:dropMenu value="Evento">
+								<b:navLink value="Torneio" href="torneio/menu.xhtml"/>
+							   	<b:dropMenu value="Duelo">
+									<b:navLink value="Simples" href="simples/menu.xhtml"/>
+								   	<b:navLink value="Dupla" href="dupla/menu.xhtml"/>
+								</b:dropMenu>
+							</b:dropMenu>
+							<b:dropMenu value="Item">
+								<b:navLink value="Item do Milênio" href="itemDoMilenio/menu.xhtml"></b:navLink>
+								<b:navLink value="Relíquia do Milênio" href="reliquiaDoMilenio/menu.xhtml"></b:navLink>
+							</b:dropMenu>
+							<b:dropMenu value="Personagem">
+								<b:navLink value="Pessoa" href="pessoa/menu.xhtml"></b:navLink>
+								<b:navLink value="Faraó" href="farao/menu.xhtml"></b:navLink>
+								<b:navLink value="Duelista" href="duelista/menu.xhtml"></b:navLink>
+							</b:dropMenu>
+						</b:dropMenu>						
+						<b:navLink value="About" href="#"></b:navLink>
+					</b:navbarLinks>
+				</div>
+			</b:navBar>
+		</div>
+		<div id="mainPanel">
+			<b:panel>
+				<h:graphicImage library="images" name="yugioh.png"/>
+			</b:panel>
+		</div>
+		<div id="footer">
+			<b:panel>
+				Yu-Gi-Oh! CRUD for ECOE08
+			</b:panel>
+		</div>
+	</div>
+</h:body>
+</html>
+

@@ -1,0 +1,51 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:b="http://bootsfaces.net/ui">
+
+<ui:composition template="../template.xhtml">
+	<ui:define name="row2">
+		<b:form>
+			<b:panelGrid columns="1">
+				<b:inputText label="Armadilha:" placeholder="(Nome)" value="#{armadilhaBean.armadilha.nome}" required="true"/>
+			</b:panelGrid>
+			<div id="submitQuery">
+				<b:panel>
+					<p><b:commandButton look="primary" value="Buscar" action="#{armadilhaBean.findByName}"/></p>
+				</b:panel>
+			</div>		
+		</b:form>
+		<b:form>
+		    <b:panelGrid columns="1">
+		        <b:selectOneMenu value="#{armadilhaBean.armadilha}" ajax="true" process="@this" update="a b c d">
+		            <f:converter converterId="armadilhaConverter"/>
+		            <f:selectItem itemLabel="(Selecione a Carta Armadilha)" noSelectionOption="true"/>
+		            <f:selectItems value="#{armadilhaBean.armadilhas}" var="a" itemValue="#{a}" itemLabel="#{a.id}" />
+		        </b:selectOneMenu>
+		        <b:inputText id="a" label="Nome:" placeholder="(Nome)" value="#{armadilhaBean.armadilha.nome}" disabled="true"/>
+		        <h:inputHidden value="#{armadilhaBean.armadilha.nome}"/>
+				<b:selectOneMenu id="b" label="Tipo de Magia:" value="#{armadilhaBean.armadilha.tipo}">
+					<f:selectItem itemLabel="(Selecione o Tipo de Armadilha)" itemValue="" noSelectionOption="true"/>
+					<f:selectItems value="#{enumBean.armadilhas}"/>
+				</b:selectOneMenu>
+				<b:selectOneMenu id="c" label="Velocidade:" value="#{armadilhaBean.armadilha.velocidade}">
+					<f:selectItem itemLabel="(Selecione a Velocidade)" itemValue="" noSelectionOption="true"/>
+					<f:selectItems value="#{enumBean.velocidades}"/>
+				</b:selectOneMenu>
+				<b:inputTextarea id="d" label="Efeito:" placeholder="(Digite o Efeito)" value="#{armadilhaBean.armadilha.efeito}"/>		
+		    </b:panelGrid>
+		    <div id="submitQuery">
+				<b:panel>
+					<p><b:commandButton look="warning" value="Atualizar" action="#{armadilhaBean.atualizar}"/></p>
+				</b:panel>
+			</div>
+		</b:form>
+	</ui:define>
+	<ui:define name="row3">
+	</ui:define>
+</ui:composition>
+</html>

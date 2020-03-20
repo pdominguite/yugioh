@@ -1,0 +1,30 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:b="http://bootsfaces.net/ui">
+
+<ui:composition template="../template.xhtml">
+	<ui:define name="row2">
+		<b:form>
+			<b:panelGrid columns="1">
+				<b:inputText label="Nome:" value="#{pessoaBean.pessoa.nome}" required="true"/>
+				<b:inputText label="Nascimento:" value="#{pessoaBean.pessoa.nascimento}"/>
+				<b:inputText label="Altura:" value="#{pessoaBean.pessoa.altura}"/>
+				<b:inputText label="Peso:" value="#{pessoaBean.pessoa.peso}"/>
+				<b:inputText label="Profissão:" value="#{pessoaBean.pessoa.profissao}"/>
+				<b:inputText label="Gênero:" value="#{pessoaBean.pessoa.genero}"/>
+			</b:panelGrid>
+			<div id="submitQuery">
+				<b:panel>
+					<p><b:commandButton look="success" value="Inserir" action="#{pessoaBean.inserir}"/></p>
+				</b:panel>
+			</div>
+			<b:message/>
+		</b:form>
+	</ui:define>
+</ui:composition>
+</html>

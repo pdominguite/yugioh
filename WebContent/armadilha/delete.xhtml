@@ -1,0 +1,45 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:b="http://bootsfaces.net/ui">
+
+<ui:composition template="../template.xhtml">
+	<ui:define name="row2">
+		<b:form>
+			<b:panelGrid columns="1">
+				<b:inputText label="Armadilha:" placeholder="(Nome)" value="#{armadilhaBean.armadilha.nome}" required="true"/>
+			</b:panelGrid>
+			<div id="submitQuery">
+				<b:panel>
+					<p><b:commandButton look="primary" value="Buscar" action="#{armadilhaBean.findByName}"/></p>
+				</b:panel>
+			</div>		
+		</b:form>
+		<b:form>
+		    <b:panelGrid columns="1">
+		        <b:selectOneMenu value="#{armadilhaBean.armadilha}" ajax="true" process="@this" update="a b c d">
+		            <f:converter converterId="armadilhaConverter"/>
+		            <f:selectItem itemLabel="(Id)" noSelectionOption="true"/>
+		            <f:selectItems value="#{armadilhaBean.armadilhas}" var="a" itemValue="#{a}" itemLabel="#{a.id}" />
+		        </b:selectOneMenu>
+			        <b:inputText id="a" label="Nome:" placeholder="(Nome)" value="#{armadilhaBean.armadilha.nome}" disabled="true"/>
+			        <h:inputHidden value="#{armadilhaBean.armadilha.nome}"/>
+					<b:inputText id="b" label="Tipo de Magia:" placeholder="(Tipo de Magia)" value="#{armadilhaBean.armadilha.tipo}" disabled="true"/>
+					<b:inputText id="c" label="Velocidade:" placeholder="(Velocidade)" value="#{armadilhaBean.armadilha.velocidade}" disabled="true"/>
+					<b:inputTextarea id="d" label="Efeito:" placeholder="(Efeito)" value="#{armadilhaBean.armadilha.efeito}" disabled="true"/>
+		    </b:panelGrid>
+		<div id="submitQuery">
+			<b:panel>
+				<p><b:commandButton look="danger" value="Excluir" action="#{armadilhaBean.excluir}"/></p>
+			</b:panel>
+		</div>
+		</b:form>
+	</ui:define>
+	<ui:define name="row3">
+	</ui:define>
+</ui:composition>
+</html>

@@ -1,0 +1,31 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:b="http://bootsfaces.net/ui">
+
+<ui:composition template="../template.xhtml">
+	<ui:define name="row2">
+		<b:form>
+			<b:panelGrid columns="1">
+				<b:inputText label="Nome:" value="#{itemDoMilenioBean.item.nome}" required="true"/>
+				<b:selectOneMenu label="Criador:" value="#{itemDoMilenioBean.item.criador}" required="true">
+					<f:selectItem itemLabel="(Selecione uma Pessoa)" itemValue="" noSelectionOption="true"/>
+					<f:selectItems value="#{pessoaBean.pessoas}" var="p" itemLabel="#{p.nome}"/>
+				</b:selectOneMenu>
+				<b:inputText label="Criação:" value="#{itemDoMilenioBean.item.criacao}"/>
+				<b:inputText label="Função:" value="#{itemDoMilenioBean.item.funcao}"/>
+			</b:panelGrid>
+			<div id="submitQuery">
+				<b:panel>
+					<p><b:commandButton look="success" value="Inserir" action="#{itemDoMilenioBean.inserir}"/></p>
+				</b:panel>
+			</div>
+			<b:message/>
+		</b:form>
+	</ui:define>
+</ui:composition>
+</html>

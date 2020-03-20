@@ -1,0 +1,36 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:b="http://bootsfaces.net/ui">
+
+<ui:composition template="../template.xhtml">
+	<ui:define name="row2">
+		<b:form>
+			<b:panelGrid columns="1">
+				<b:inputText label="Mágica:" placeholder="(Nome)" value="#{magicaBean.magica.nome}"/>
+			</b:panelGrid>
+			<div id="submitQuery">
+				<b:panel>
+					<p><b:commandButton look="primary" value="Buscar" action="#{magicaBean.findByName}"/></p>
+				</b:panel>
+			</div>		
+		</b:form>
+		<b:form>
+		    <b:panelGrid columns="1">
+		   		<b:selectOneMenu label="Id:" value="#{magicaBean.magica}" ajax="true" process="@this" update="a b c d">
+		            <f:converter converterId="magicaConverter"/> 
+		            <f:selectItems value="#{magicaBean.m}" var="a" itemValue="#{a}" itemLabel="#{a.id}" />
+		        </b:selectOneMenu>
+		        <b:inputText id="a" label="Nome:" value="#{magicaBean.magica.nome}" disabled="true"/>
+		        <b:inputText id="b" label="Tipo:" value="#{magicaBean.magica.tipo}" disabled="true"/>
+		        <b:inputText id="c" label="Velocidade:" value="#{magicaBean.magica.velocidade}" disabled="true"/>
+				<b:inputText id="d" label="Efeito:" value="#{magicaBean.magica.efeito}" disabled="true"/>
+		    </b:panelGrid>
+		</b:form>
+	</ui:define>
+</ui:composition>
+</html>

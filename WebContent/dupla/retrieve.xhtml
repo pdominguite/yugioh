@@ -1,0 +1,42 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:b="http://bootsfaces.net/ui">
+
+<ui:composition template="../template.xhtml">
+	<ui:define name="row2">
+		<b:form>
+			<b:panelGrid columns="1">
+				<b:inputText label="Objetivo:" value="#{duplaBean.dupla.objetivo}"/>
+			</b:panelGrid>
+			<div id="submitQuery">
+				<b:panel>
+					<p><b:commandButton look="primary" value="Buscar" action="#{duplaBean.buscar}"/></p>
+				</b:panel>
+			</div>		
+		</b:form>
+		<b:form>
+		    <b:panelGrid columns="1">
+		        <b:inputText label="Objetivo:" value="#{duplaBean.dupla.objetivo}" disabled="true"/>
+				<b:inputText label="Local:" value="#{duplaBean.dupla.local}" disabled="true"/>
+				<b:inputText label="Pontos de Vida Inicial:" value="#{duplaBean.dupla.pontosDeVidaInicial}" disabled="true"/>
+				<b:inputText label="Domínio:" value="#{duplaBean.dupla.dominio}" disabled="true"/>
+				<b:label text="Dupla 1:"/>
+				<b:inputText label="Participante 1:" value="#{duplaBean.participante1.nome}" disabled="true"/>
+				<b:inputText label="Participante 2:" value="#{duplaBean.participante2.nome}" disabled="true"/>
+				<b:label text="Dupla 2:"/>
+				<b:inputText label="Participante 3:" value="#{duplaBean.participante3.nome}" disabled="true"/>
+				<b:inputText label="Participante 4:" value="#{duplaBean.participante4.nome}" disabled="true"/>
+				<b:label text="Vencedores:"/>
+				<b:inputText value="#{duplaBean.vencedor1.nome}" disabled="true"/>
+				<b:inputText value="#{duplaBean.vencedor2.nome}" disabled="true"/>
+				<b:inputText label="Duração:" value="#{duplaBean.dupla.duracao}" disabled="true"/>
+		    </b:panelGrid>
+		</b:form>
+	</ui:define>
+</ui:composition>
+</html>

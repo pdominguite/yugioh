@@ -1,0 +1,44 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:b="http://bootsfaces.net/ui">
+
+<ui:composition template="../template.xhtml">
+	<ui:define name="row2">
+		<b:form>
+			<b:panelGrid columns="1">
+				<b:inputText label="Nome:" value="#{duelistaBean.duelista.nome}"/>
+			</b:panelGrid>
+			<div id="submitQuery">
+				<b:panel>
+					<p><b:commandButton look="primary" value="Buscar" action="#{duelistaBean.buscar}"/></p>
+				</b:panel>
+			</div>		
+		</b:form>
+		<b:form>
+		    <b:panelGrid columns="1">
+	        	<b:inputText label="Nome:" value="#{duelistaBean.duelista.nome}" disabled="true"/>
+				<b:inputText label="Nascimento:" value="#{duelistaBean.duelista.nascimento}" disabled="true"/>
+				<b:inputText label="Altura:" value="#{duelistaBean.duelista.altura}" disabled="true"/>
+				<b:inputText label="Peso:" value="#{duelistaBean.duelista.peso}" disabled="true"/>
+				<b:inputText label="Profissão:" value="#{duelistaBean.duelista.profissao}" disabled="true"/>
+				<b:inputText label="Gênero:" value="#{duelistaBean.duelista.genero}" disabled="true"/>
+				<b:inputText label="Deck:" value="#{duelistaBean.duelista.deck}" disabled="true"/>
+				<b:inputText label="Pontos de Vida:" value="#{duelistaBean.duelista.pontosDeVida}" disabled="true"/>
+				<b:inputText label="Duelos Ganhos:" value="#{duelistaBean.duelista.duelosGanhos}" disabled="true"/>
+				<b:inputText label="Classificação:" value="#{duelistaBean.duelista.classificacao}" disabled="true"/>
+				<b:inputText label="Ranking:" value="#{duelistaBean.duelista.ranking}" disabled="true"/>
+				<b:inputText label="Baralho:" value="#{duelistaBean.duelista.baralho}" var="a" itemLabel="#{a.id}" disabled="true"/>
+				<b:inputText label="Relíquias:" value="#{duelistaBean.duelista.baralho}" var="a" itemLabel="#{a.id}" disabled="true"/>
+				<b:selectMultiMenu label="Relíquias:" value="" readonly="true" nonSelectedText="(Cartas do Baralho)" buttonWidth="500">
+				    <f:selectItems value="#{duelistaBean.duelista.baralho.cartas}" var="r" itemLabel="#{r.id} - #{r.nome}"/>
+			    </b:selectMultiMenu>
+		    </b:panelGrid>
+</b:form>
+	</ui:define>
+</ui:composition>
+</html>

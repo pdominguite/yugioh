@@ -1,0 +1,46 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:b="http://bootsfaces.net/ui">
+
+<ui:composition template="../template.xhtml">
+	<ui:define name="row2">
+		<b:form>
+			<b:panelGrid columns="1">
+				<b:inputText label="Objetivo:" value="#{torneioBean.torneio.objetivo}" required="true"/>
+				<b:inputText label="Nome:" value="#{torneioBean.torneio.nome}"/>
+				<b:inputText label="Local:" value="#{torneioBean.torneio.local}"/>
+				<b:inputText label="Pontos de Vida Inicial:" value="#{torneioBean.torneio.pontosDeVidaInicial}"/>
+				<b:selectOneMenu label="Domínio:" value="#{torneioBean.torneio.dominio}">
+					<f:selectItems value="#{enumBean.dominios}"/>
+				</b:selectOneMenu>
+				<b:selectOneMenu label="Estrutura:" value="#{torneioBean.torneio.estrutura}">
+					<f:selectItems value="#{estruturaBean.estruturas}" var="r" itemLabel="#{r.id}"/>
+				</b:selectOneMenu>
+				<b:selectMultiMenu label="Participantes:" value="#{torneioBean.participantesNome}" ajax="true" onselect="#{simplesBean.participantes()}" update="vencedores">
+				    <f:selectItem itemLabel="(Participantes)" noSelectionOption="true"/>
+				    <f:selectItems value="#{duelistaBean.duelistas}" var="r" itemValue="#{r.nome}" itemLabel="#{r.nome}"/>
+			    </b:selectMultiMenu>
+			    <b:selectMultiMenu id="vencedores" label="Vencedores:" value="#{torneioBean.vencedores}" required="true" buttonWidth="100">
+			    	<f:selectItem itemLabel="(Vencedores)" noSelectionOption="true"/>
+				    <f:selectItems value="#{torneioBean.participantes()}"/>
+			    </b:selectMultiMenu>
+			    <b:selectOneMenu label="Organizador:" value="#{torneioBean.torneio.organizador}">
+					<f:selectItems value="#{duelistaBean.duelistas}"  var="r" itemLabel="#{r.nome}"/>
+				</b:selectOneMenu>
+				<b:inputText label="Prêmio:" value="#{torneioBean.torneio.premio}"/>
+			</b:panelGrid>
+			<div id="submitQuery">
+				<b:panel>
+					<p><b:commandButton look="success" value="Inserir" action="#{torneioBean.inserir}"/></p>
+				</b:panel>
+			</div>
+			<b:message/>
+		</b:form>
+	</ui:define>
+</ui:composition>
+</html>

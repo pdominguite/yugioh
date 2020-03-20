@@ -1,0 +1,38 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:b="http://bootsfaces.net/ui">
+
+<ui:composition template="../template.xhtml">
+	<ui:define name="row2">
+		<b:form>
+			<b:panelGrid columns="1">
+				<b:inputText label="Monstro:" value="Exodia" disabled="true"/>
+				<h:inputHidden value="#{exodiaBean.exodia.nome}" var="a" itemValue="Exodia" itemLabel="Exodia"/>
+			</b:panelGrid>
+			<div id="submitQuery">
+				<b:panel>
+					<p><b:commandButton look="primary" value="Buscar" action="#{exodiaBean.buscar}"/></p>
+				</b:panel>
+			</div>		
+		</b:form>
+		<b:form>
+    <b:panelGrid columns="1">
+        <b:inputText label="Nome:" value="#{exodiaBean.exodia.nome}" disabled="true"/>
+		<b:inputText label="Nível:" value="#{exodiaBean.exodia.nivel}" disabled="true"/>
+		<b:inputText label="Ataque:" value="#{exodiaBean.exodia.ataque}" disabled="true"/>
+		<b:inputText label="Defesa:" value="#{exodiaBean.exodia.defesa}" disabled="true"/>
+		<b:inputText label="Atributo:" value="#{exodiaBean.exodia.atributo}" disabled="true"/>
+		<b:inputText label="Tipo:" value="#{exodiaBean.exodia.tipo}" disabled="true"/>
+		<b:inputText label="Posição de Batalha:" value="#{exodiaBean.exodia.posicaoDeBatalha}" disabled="true"/>
+		<b:inputText label="Poder:" value="#{exodiaBean.exodia.nomePoder}" disabled="true"/>
+		<b:inputText label="Efeito:" value="#{exodiaBean.exodia.efeito}" disabled="true"/>
+    </b:panelGrid>
+</b:form>
+	</ui:define>
+</ui:composition>
+</html>

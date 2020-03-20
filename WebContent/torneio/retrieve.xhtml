@@ -1,0 +1,44 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:b="http://bootsfaces.net/ui">
+
+<ui:composition template="../template.xhtml">
+	<ui:define name="row2">
+		<b:form>
+			<b:panelGrid columns="1">
+				<b:inputText label="Monstro:" value="#{torneioBean.torneio.objetivo}" required="true"/>
+			</b:panelGrid>
+			<div id="submitQuery">
+				<b:panel>
+					<p><b:commandButton look="primary" value="Buscar" action="#{torneioBean.buscar}"/></p>
+				</b:panel>
+			</div>		
+		</b:form>
+		<b:form>
+		    <b:panelGrid columns="1">
+				<b:inputText label="Objetivo:" value="#{torneioBean.torneio.objetivo}" disabled="true"/>
+				<b:inputText label="Nome:" value="#{torneioBean.torneio.nome}" disabled="true"/>
+				<b:inputText label="Local:" value="#{torneioBean.torneio.local}" disabled="true"/>
+				<b:inputText label="Pontos de Vida Inicial:" value="#{torneioBean.torneio.pontosDeVidaInicial}" disabled="true"/>
+				<b:inputText label="Domínio:" value="#{torneioBean.torneio.dominio}" disabled="true"/>
+				<b:inputText label="Estrutura:" value="#{torneioBean.torneio.estrutura.id}" disabled="true" />
+				<b:selectMultiMenu label="Participantes:" value="" ajax="true">
+				    <f:selectItem itemLabel="(Participantes)" noSelectionOption="true"/>
+				    <f:selectItems value="#{torneioBean.torneio.participantes}" var="r" itemValue="#{r.nome}" itemLabel="#{r.nome}"/>
+			    </b:selectMultiMenu>
+			    <b:selectMultiMenu label="Vencedores:" value="" buttonWidth="100">
+			    	<f:selectItem itemLabel="(Vencedores)" noSelectionOption="true"/>
+				    <f:selectItems value="#{torneioBean.torneio.vencedores}" var="r" itemValue="#{r.nome}" itemLabel="#{r.nome}"/>
+			    </b:selectMultiMenu>
+			    <b:inputText label="Organizador:" value="#{torneioBean.torneio.organizador.nome}" disabled="true"/>
+				<b:inputText label="Prêmio:" value="#{torneioBean.torneio.premio}" disabled="true"/>
+			</b:panelGrid>
+		</b:form>
+	</ui:define>
+</ui:composition>
+</html>

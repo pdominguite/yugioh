@@ -1,0 +1,39 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:b="http://bootsfaces.net/ui">
+
+<ui:composition template="../template.xhtml">
+	<ui:define name="row2">
+		<b:form>
+			<b:panelGrid columns="1">		
+				<b:inputText label="Nome:" value="Exodia" disabled="true" />
+				<b:inputText label="Nível:" value="#{exodiaBean.exodia.nivel}"/>
+				<b:inputText label="Ataque:" value="#{exodiaBean.exodia.ataque}"/>
+				<b:inputText label="Defesa:" value="#{exodiaBean.exodia.defesa}"/>
+				<b:selectOneMenu label="Atributo:" value="#{exodiaBean.exodia.atributo}">
+					<f:selectItems value="#{enumBean.atributos}"/>
+				</b:selectOneMenu>
+				<b:selectOneMenu label="Tipo:" value="#{exodiaBean.exodia.tipo}">
+					<f:selectItems value="#{enumBean.monstros}"/>
+				</b:selectOneMenu>
+				<b:selectOneMenu label="Posição de Batalha:" value="#{exodiaBean.exodia.posicaoDeBatalha}">
+					<f:selectItems value="#{enumBean.posicoes}"/>
+				</b:selectOneMenu>
+				<b:inputText label="Poder:" value="#{exodiaBean.exodia.nomePoder}"/>
+				<b:inputText label="Efeito:" value="#{exodiaBean.exodia.efeito}"/>
+			</b:panelGrid>
+			<div id="submitQuery">
+				<b:panel>
+					<p><b:commandButton look="success" value="Inserir" action="#{exodiaBean.inserir}"/></p>
+				</b:panel>
+			</div>
+			<b:message/>
+		</b:form>
+	</ui:define>
+</ui:composition>
+</html>
